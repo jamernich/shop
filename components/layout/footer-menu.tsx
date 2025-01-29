@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-const FooterMenuItem = ({ item }: { item: Menu }) => {
+export function FooterMenuItem({ item }: { item: Menu }) {
   const pathname = usePathname();
   const [active, setActive] = useState(pathname === item.path);
 
@@ -19,7 +19,7 @@ const FooterMenuItem = ({ item }: { item: Menu }) => {
       <Link
         href={item.path}
         className={clsx(
-          'block p-2 text-lg underline-offset-4 hover:text-black hover:underline dark:hover:text-neutral-300 md:inline-block md:text-sm',
+          'block p-2 text-lg underline-offset-4 hover:text-black hover:underline md:inline-block md:text-sm dark:hover:text-neutral-300',
           {
             'text-black dark:text-neutral-300': active
           }
@@ -29,7 +29,7 @@ const FooterMenuItem = ({ item }: { item: Menu }) => {
       </Link>
     </li>
   );
-};
+}
 
 export default function FooterMenu({ menu }: { menu: Menu[] }) {
   if (!menu.length) return null;
